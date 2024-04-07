@@ -1,0 +1,12 @@
+{{ lions }}
+
+<h1>확인</h1>
+
+{% for lion in lions %}
+    <h3>카테고리 : {{ lion.name }}</h3>
+    {% for menu in lion.menu_set.all %}
+    음료이름 : {{ menu.name }} 가격 : {{ menu.price }} 
+        <img src="{{ menu.image.url }}" alt="{{menu.name}}">
+        <br>
+    {% endfor %}
+{% endfor %}

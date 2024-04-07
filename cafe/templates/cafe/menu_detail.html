@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menu Detail</title>
+    <style>
+        .title {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .description {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .menu {
+            text-align: center;
+        }
+        .menu img {
+            width: 600px;
+            height: 600px;
+            border-radius: 5px;
+        }
+        .quantity {
+            width: 50px;
+            height: 20px;
+            text-align: center;
+
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <h1 class="title">주문하기</h1>
+        <h2 class="title">{{ object.name }}</h2>
+        <ul class="description">
+            <div class="menu">
+                <img src="{{ menu.image.url }}">
+                <h1>{{ menu.name }}</h1>
+                <h2>{{ menu.price }}원</h2>
+                <label for="quantity">수량:</label>
+                        <select id="quantity" class="quantity" name="quantity">
+                            {% for i in "123456789" %}
+                                <option value="{{ forloop.counter0 }}">{{ i }}</option>
+                            {% endfor %}
+                        </select>
+                <a href="{% url 'result' menu.id %}"> 
+                    <button>주문하기</button> 
+                </a>
+            </div>
+        </ul>
+    </div>
+</body>
+</html>

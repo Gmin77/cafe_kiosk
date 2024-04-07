@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menu</title>
+    <style>
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .menu-card {
+            text-align: center;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 10px;
+            margin: 10px;
+            width: 200px;
+            display: inline-block;
+        }
+        .menu-card img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 5px;
+        }
+        .title{
+            font-weight: bold;
+            text-align: center;
+        }
+    </style>
+</head>
+<body class="container">
+    <div id ="content">
+        <h1 class="title">Cafe MenuBoard</h1>
+        {{ category.name }}
+        <ul>
+            {% for menu in object_list %}
+                <a href="{% url 'detail' menu.id %}">
+                    <div class="menu-card">
+                        <img src="{{ menu.image.url }}">
+                        <h2>{{ menu.name }}</h2>
+                        <p>{{ menu.description }}</p>
+                        <p>금액: {{ menu.price }}원</p>
+                    </div>
+                </a>
+            {% endfor %}
+        </ul>
+    </div>
+</body>
+</html>
